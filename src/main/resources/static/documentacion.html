@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Documentación API Agenda</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 1000px; margin: auto; background: #f9f9f9; }
+    h1, h2 { color: #2c3e50; }
+    h3 { color: #34495e; }
+    pre, code { background: #eee; padding: 10px; display: block; white-space: pre-wrap; border-radius: 5px; }
+    .endpoint { background: #fff; border: 1px solid #ddd; padding: 20px; margin-bottom: 20px; border-radius: 5px; }
+    .method { font-weight: bold; }
+    .method {
+      font-weight: bold;
+      color: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .method-post { background-color: #27ae60; }
+    .method-get { background-color: #2980b9; }
+    .method-put { background-color: #f39c12; }
+    .method-delete { background-color: #c0392b; }
+
+  </style>
+</head>
+<body>
+
+  <h1>📅 Documentación API - Agenda de Contactos y Eventos</h1>
+  <p>Proyecto en Java + Spring Boot con autenticación JWT y OAuth. Permite registrar, editar y eliminar contactos y eventos.</p>
+
+  <h2>🔒 Autenticación</h2>
+  <p>Para acceder a los endpoints protegidos debes enviar un token JWT en el encabezado:</p>
+  <pre><code>Authorization: Bearer &lt;tu-token&gt;</code></pre>
+
+  <h2>👤 Usuario</h2>
+  <p>Autenticación básica con usuario y contraseña (registrar/login).</p>
+
+  <h2>📇 Contactos</h2>
+
+  <div class="endpoint">
+    <h3>➕ POST /contactos</h3>
+    <p>Guardar un nuevo contacto.</p>
+    <p class="method">Request body:</p>
+    <pre><code>{
+  "nombre": "Juan Pérez",
+  "email": "juan@mail.com",
+  "telefono": "1122334455"
+}</code></pre>
+    <p class="method">Response 200:</p>
+    <code>OK</code>
+  </div>
+
+  <div class="endpoint">
+    <h3>📄 GET /contactos/formulario</h3>
+    <p>Muestra el formulario para agregar un contacto.</p>
+  </div>
+
+  <div class="endpoint">
+    <h3>❌ GET /contactos/eliminar/{id}</h3>
+    <p>Elimina un contacto de la agenda.</p>
+    <p class="method">Parámetros:</p>
+    <code>{id} → ID del contacto</code>
+  </div>
+
+  <div class="endpoint">
+    <h3>✏️ GET /contactos/editar/{id}</h3>
+    <p>Formulario para editar contacto.</p>
+    <p class="method">Parámetros:</p>
+    <code>{id} → ID del contacto</code>
+  </div>
+
+  <h2>📆 Eventos</h2>
+
+  <div class="endpoint">
+    <h3>🆕 POST /eventos</h3>
+    <p>Crear un nuevo evento.</p>
+    <p class="method">Request body:</p>
+    <pre><code>{
+  "titulo": "Reunión",
+  "descripcion": "Reunión con equipo",
+  "fecha": "2025-05-30",
+  "hora": "10:00",
+  "usuarioId": 1
+}</code></pre>
+  </div>
+
+  <div class="endpoint">
+    <h3>📄 GET /eventos</h3>
+    <p>Listar todos los eventos del usuario.</p>
+  </div>
+
+  <div class="endpoint">
+    <h3>🔄 PUT /eventos/{id}</h3>
+    <p>Actualizar un evento existente.</p>
+    <p class="method">Parámetros:</p>
+    <code>{id} → ID del evento</code>
+    <p class="method">Request body:</p>
+    <pre><code>{
+  "titulo": "Cumpleaños",
+  "descripcion": "Fiesta sorpresa",
+  "fecha": "2025-05-26",
+  "hora": "14:30",
+  "usuarioId": 5
+}</code></pre>
+  </div>
+
+  <div class="endpoint">
+    <h3>🗑️ DELETE /eventos/{id}</h3>
+    <p>Eliminar evento por ID.</p>
+    <code>{id} → ID del evento</code>
+  </div>
+
+  <h2>⚙️ Tecnologías Usadas</h2>
+  <ul>
+    <li>Java 21</li>
+    <li>Spring Boot</li>
+    <li>Spring Security + JWT</li>
+    <li>OAuth 2.0</li>
+    <li>Thymeleaf + HTML + CSS</li>
+    <li>MySQL</li>
+    <li>Swagger para documentación</li>
+  </ul>
+
+  <h2>📌 Notas</h2>
+  <ul>
+    <li>Usar Swagger en <code>/swagger-ui/index.html</code> para probar la API visualmente.</li>
+    <li>Los endpoints requieren autenticación después del login.</li>
+    <li>Los campos de fecha deben ir en formato <code>yyyy-MM-dd</code>.</li>
+  </ul>
+
+</body>
+</html>

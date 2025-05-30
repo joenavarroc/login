@@ -1,0 +1,58 @@
+services:
+  db:
+    image: mysql:8
+    container_name: mysql-agenda
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: agenda
+      MYSQL_USER: agendauser
+      MYSQL_PASSWORD: agendapass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./src/main/resources/sql:/docker-entrypoint-initdb.d 
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: agenda-backend
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-agenda:3306/agenda
+      SPRING_DATASOURCE_USERNAME: agendauser
+      SPRING_DATASOURCE_PASSWORD: agendapass
+
+      # Seguridad
+      DEFAULT_USER: admin
+      DEFAULT_PASSWORD: 1234
+
+      # JWT
+      JWT_SECRET: 586E3272357538782F413F4428472B4B6250655368566B597033733676397924
+      JWT_EXPIRATION: 86400000
+
+      # OAuth2 (reemplazá por tus valores reales)
+      GITHUB_CLIENT_ID: TU_CLIENT_ID
+      GITHUB_CLIENT_SECRET: TU_CLIENT_SECRET
+      GOOGLE_CLIENT_ID: TU_CLIENT_ID
+      GOOGLE_CLIENT_SECRET: TU_CLIENT_SECRET
+      FACEBOOK_CLIENT_ID: TU_CLIENT_ID
+      FACEBOOK_CLIENT_SECRET: TU_CLIENT_SECRET
+
+      # Email
+      MAIL_HOST: smtp.gmail.com
+      MAIL_PORT: 587
+      MAIL_USERNAME: tu_email@gmail.com
+      MAIL_PASSWORD: tu_password
+
+
+    entrypoint: ["./wait-for-it.sh", "mysql-agenda:3306", "--", "java", "-jar", "app.jar"]
+
+
+volumes:
+  mysql_data:

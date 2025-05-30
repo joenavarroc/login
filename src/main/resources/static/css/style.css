@@ -1,0 +1,282 @@
+        html, body {
+            height: 100%;
+            
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            background-color: #203b5e;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+        }
+
+        .container {
+            flex: 1;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .table-responsive {
+            max-width: 100%;
+            overflow-x: auto;
+            padding: 1rem;
+            margin: 0 auto;
+        }
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+
+.table-shadow {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.514);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.shadow-custom {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.514);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.shadow-custom:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+
+#eventModal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    pointer-events: auto;
+}
+
+
+
+        #eventModal.hidden {
+            display: none !important;
+        }
+
+#modalContent {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    z-index: 2100;
+}
+
+
+
+        #calendar-container {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        #calendar {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .fc-daygrid-day {
+            min-height: 120px; /* Altura mínima por celda */
+        }
+
+        .fc .fc-daygrid-event {
+            white-space: normal;
+            font-size: 0.85rem;
+            padding: 3px 5px;
+            background-color: #0d6efd;
+            color: white;
+            border-radius: 4px;
+        }
+
+        footer {
+    background-color: #222;
+    color: #ddd;
+    padding: 20px 0;
+    font-size: 0.9rem;
+    text-align: center;
+    border-top: 1px solid #444;
+
+}
+footer a {
+    color: #ffc107;
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* ========================================================= */
+/* calendario */
+/* ========================================================= */
+
+#calendar {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.514);
+}
+
+/* Estiliza los encabezados de días */
+.fc-col-header-cell {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Celdas del día */
+.fc-daygrid-day {
+    border: 1px solid #dee2e6;
+    background-color: #fafafa;
+}
+
+/* Eventos dentro del calendario */
+.fc-daygrid-event {
+    background-color: #0d6efd !important;
+    color: white !important;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    padding: 2px 6px;
+    margin-bottom: 2px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.fc-daygrid-event:hover {
+    background-color: #0b5ed7 !important;
+}
+
+/* Hoy */
+.fc-day-today {
+    background-color: #e8ebfe !important;
+}
+
+
+/* ========================================================= */
+/* registro y login */
+/* ========================================================= */
+
+
+.auth-card {
+    background-color: #fff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.473);
+    border-radius: 12px;
+    padding: 2rem;
+    min-width: 320px;
+    max-width: 400px;
+    width: 100%;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.form-label {
+    font-weight: 500;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.table th,
+.table td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px; /* ajustable */
+}
+
+
+.botones-accion {
+  font-size: 0.80rem !important;
+}
+
+/* botones login */
+
+.auth-card {
+    width: 320px;  /* ancho fijo para que no sea gigante */
+    padding: 2rem;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
+}
+
+.oauth-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;       /* separa icono y texto */
+    width: 100%;       /* que ocupen todo el ancho del contenedor */
+    max-width: 280px;  /* tamaño máximo */
+    margin: 0.4rem auto; /* margen arriba/abajo para separar entre botones, y centrar horizontalmente */
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 0.3rem;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.github-btn {
+    background-color: #24292e;
+}
+
+.github-btn:hover {
+    background-color: #444c56;
+}
+
+.facebook-btn {
+    background-color: #3b5998;
+}
+
+.facebook-btn:hover {
+    background-color: #2d4373;
+}
+
+.google-btn {
+    background-color: #db4437;
+}
+
+.google-btn:hover {
+    background-color: #a33329;
+}
+
+.oauth-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+
